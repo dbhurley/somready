@@ -16,7 +16,7 @@ export default function BeforeAfter() {
     <section className="py-20 px-4 sm:px-6 lg:px-8 bg-surface">
       <div className="max-w-4xl mx-auto">
         <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold text-text-primary">Why it matters</h2>
+          <h2 className="font-display text-3xl md:text-4xl text-text-primary">Why it matters</h2>
           <p className="mt-4 text-lg text-text-muted max-w-2xl mx-auto">
             Publishers are paying for AI agents to read their content inefficiently. Here&apos;s what the same pages look like with SOM.
           </p>
@@ -64,7 +64,7 @@ export default function BeforeAfter() {
         </p>
 
         <div className="mt-12 text-center">
-          <span className="text-6xl md:text-7xl font-bold text-accent">17&times;</span>
+          <span className="font-display text-6xl md:text-7xl text-accent">17&times;</span>
           <p className="mt-2 text-lg text-text-muted">average token reduction across 44 measured sites</p>
         </div>
       </div>

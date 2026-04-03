@@ -110,7 +110,7 @@ export default function Home() {
             Built on the SOM open standard &middot; somspec.org &#8599;
           </a>
 
-          <h1 className="text-5xl md:text-6xl font-bold tracking-tight text-text-primary">
+          <h1 className="font-display text-5xl md:text-6xl text-text-primary leading-tight">
             Make your website readable by every AI agent.
           </h1>
 
@@ -152,13 +152,13 @@ export default function Home() {
       <section id="how-it-works" className="py-20 px-4 sm:px-6 lg:px-8">
         <div className="max-w-5xl mx-auto">
           <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-text-primary">Up and running in 5 minutes</h2>
+            <h2 className="font-display text-3xl md:text-4xl text-text-primary">Up and running in 5 minutes</h2>
           </div>
 
           <div className="grid md:grid-cols-3 gap-6">
             {steps.map((step) => (
               <div key={step.num} className="relative bg-white border border-border rounded-xl p-6">
-                <span className="inline-flex items-center justify-center w-8 h-8 rounded-lg bg-accent text-white text-sm font-bold mb-4">
+                <span className="inline-flex items-center justify-center w-8 h-8 rounded-lg bg-accent text-white text-sm font-semibold mb-4">
                   {step.num}
                 </span>
                 <div className="text-2xl mb-2">{step.icon}</div>
@@ -174,7 +174,7 @@ export default function Home() {
       <section id="features" className="py-20 px-4 sm:px-6 lg:px-8 bg-surface">
         <div className="max-w-5xl mx-auto">
           <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-text-primary">Everything publishers need</h2>
+            <h2 className="font-display text-3xl md:text-4xl text-text-primary">Everything publishers need</h2>
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -193,7 +193,7 @@ export default function Home() {
       <section id="pricing" className="py-20 px-4 sm:px-6 lg:px-8">
         <div className="max-w-5xl mx-auto">
           <div className="text-center mb-4">
-            <h2 className="text-3xl md:text-4xl font-bold text-text-primary">Simple, transparent pricing</h2>
+            <h2 className="font-display text-3xl md:text-4xl text-text-primary">Simple, transparent pricing</h2>
             <p className="mt-4 text-lg text-text-muted">Start free. Scale as your agent traffic grows.</p>
           </div>
 
@@ -217,7 +217,7 @@ export default function Home() {
       {/* Waitlist */}
       <section id="waitlist" className="py-20 px-4 sm:px-6 lg:px-8 bg-surface">
         <div className="max-w-lg mx-auto text-center">
-          <h2 className="text-3xl md:text-4xl font-bold text-text-primary">Join the private beta</h2>
+          <h2 className="font-display text-3xl md:text-4xl text-text-primary">Join the private beta</h2>
           <p className="mt-4 text-lg text-text-muted">
             We&apos;re onboarding publishers in batches to ensure quality. Enter your email and domain to get early access.
           </p>

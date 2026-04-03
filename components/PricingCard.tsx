@@ -27,7 +27,7 @@ export default function PricingCard({ name, price, subtitle, features, highlight
       <div className="mb-6">
         <h3 className={`text-lg font-semibold ${purple ? 'text-purple' : 'text-text-primary'}`}>{name}</h3>
         <div className="mt-2 flex items-baseline gap-1">
-          <span className="text-4xl font-bold text-text-primary">{price}</span>
+          <span className="font-display text-4xl text-text-primary">{price}</span>
           <span className="text-text-muted text-sm">/month</span>
         </div>
         <p className="mt-1 text-sm text-text-muted">{subtitle}</p>
