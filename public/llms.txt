@@ -1,0 +1,14 @@
+# SOM Ready
+> Agent-ready publishing infrastructure for web publishers
+
+SOM Ready makes any website readable by AI agents via the SOM open standard.
+Publishers add two lines to robots.txt; AI agents get efficient structured pages.
+
+## Key pages
+- /: Landing page, snippet generator, pricing
+- API: POST /api/waitlist for early access
+
+## Built on
+- SOM v1.0 specification: https://somspec.org/spec
+- SOM Directives for robots.txt: https://somspec.org/directives
+- Reference implementation: https://github.com/plasmate-labs/plasmate

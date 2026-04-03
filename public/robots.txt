@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+SOM-Endpoint: https://api.somready.com/v1/som
+SOM-Format: SOM/1.0
+SOM-Freshness: 86400
