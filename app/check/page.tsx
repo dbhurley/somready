@@ -114,7 +114,7 @@ export default function CheckPage() {
 
   const cleanDomain = domain.replace(/^https?:\/\//, '').replace(/\/.*$/, '').trim().toLowerCase()
 
-  const badgeUrl    = `https://somready.com/api/badge?domain=${cleanDomain}`
+  const badgeUrl    = `https://somready.com/badge/${cleanDomain}.svg`
   const badgeEmbed  = `<a href="https://somready.com/check?d=${cleanDomain}"><img src="${badgeUrl}" alt="SOM Ready" /></a>`
   const badgeMd     = `[![SOM Ready](${badgeUrl})](https://somready.com/check?d=${cleanDomain})`
 
@@ -334,7 +334,7 @@ export default function CheckPage() {
 
         {/* Footer nudge */}
         {!result && !loading && (
-          <div className="mt-12 text-center">
+          <div className="mt-12 text-center space-y-2">
             <p className="text-sm text-muted">
               Want to implement SOM Directives?{' '}
               <a href="https://somspec.org/directives" target="_blank" rel="noopener noreferrer" className="text-accent hover:underline">
@@ -344,6 +344,32 @@ export default function CheckPage() {
               <a href="/" className="text-accent hover:underline">
                 Get a hosted endpoint →
               </a>
+            </p>
+            <p className="text-sm text-muted">
+              See who&apos;s already SOM-ready:{' '}
+              <a href="https://somspec.org/publishers" target="_blank" rel="noopener noreferrer" className="text-accent hover:underline">
+                Publisher leaderboard →
+              </a>
+            </p>
+          </div>
+        )}
+
+        {/* Post-result leaderboard nudge */}
+        {result && (
+          <div className="mt-6 text-center">
+            <p className="text-sm text-muted">
+              See how your site compares:{' '}
+              <a href="https://somspec.org/publishers" target="_blank" rel="noopener noreferrer" className="text-accent hover:underline">
+                Publisher leaderboard →
+              </a>
+              {result.level !== 'ready' && (
+                <>
+                  {' · '}
+                  <a href="/docs" className="text-accent hover:underline">
+                    Implementation guide →
+                  </a>
+                </>
+              )}
             </p>
           </div>
         )}
