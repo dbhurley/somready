@@ -113,8 +113,8 @@ function emptyDirectives(): SOMDirectives {
   }
 }
 
-// Generate the recommended robots.txt snippet for a domain
-export function buildSnippet(domain: string): string {
+// Generate the recommended robots.txt snippet
+export function buildSnippet(): string {
   return `# Semantic Object Model — somready.com
 SOM-Endpoint: https://api.somready.com/v1/som
 SOM-Format: SOM/1.0

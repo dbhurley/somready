@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import type { CheckResult } from '@/lib/som-robots'
 
 // ─── Directive metadata ────────────────────────────────────────────────────
@@ -143,11 +143,11 @@ export default function CheckPage() {
     else                     { setCopiedBadge(true);  setTimeout(() => setCopiedBadge(false), 2000) }
   }
 
-  // Pre-fill domain from query param on load
-  if (typeof window !== 'undefined') {
+  // Pre-fill domain from ?d= query param on mount
+  useEffect(() => {
     const q = new URLSearchParams(window.location.search).get('d')
-    if (q && !domain) setDomain(q)
-  }
+    if (q) setDomain(q)
+  }, [])
 
   return (
     <div className="min-h-screen bg-background">
