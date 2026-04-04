@@ -10,9 +10,10 @@ export default function Footer() {
           <p className="text-text-muted text-sm">Agent-ready publishing infrastructure</p>
 
           <div className="flex flex-wrap justify-center gap-6 text-sm text-text-muted">
-            <a href="#how-it-works" className="hover:text-text-primary transition-colors">How it works</a>
-            <a href="#features" className="hover:text-text-primary transition-colors">Features</a>
-            <a href="#pricing" className="hover:text-text-primary transition-colors">Pricing</a>
+            <a href="/#how-it-works" className="hover:text-text-primary transition-colors">How it works</a>
+            <a href="/#features" className="hover:text-text-primary transition-colors">Features</a>
+            <a href="/check" className="hover:text-text-primary transition-colors">Check your site</a>
+            <a href="/#pricing" className="hover:text-text-primary transition-colors">Pricing</a>
             <a href="https://somspec.org" target="_blank" rel="noopener noreferrer" className="hover:text-text-primary transition-colors">somspec.org</a>
             <a href="https://webtaskbench.com" target="_blank" rel="noopener noreferrer" className="hover:text-text-primary transition-colors">webtaskbench.com</a>
           </div>

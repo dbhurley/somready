@@ -19,9 +19,10 @@ export default function Nav() {
               <span className="font-display text-xl text-text-primary tracking-tight">somready</span>
             </a>
             <div className="hidden md:flex items-center gap-6 text-sm text-text-muted">
-              <a href="#how-it-works" className="hover:text-text-primary transition-colors">How it works</a>
-              <a href="#features" className="hover:text-text-primary transition-colors">Features</a>
-              <a href="#pricing" className="hover:text-text-primary transition-colors">Pricing</a>
+              <a href="/#how-it-works" className="hover:text-text-primary transition-colors">How it works</a>
+              <a href="/#features" className="hover:text-text-primary transition-colors">Features</a>
+              <a href="/check" className="hover:text-text-primary transition-colors">Check your site</a>
+              <a href="/#pricing" className="hover:text-text-primary transition-colors">Pricing</a>
             </div>
           </div>
           <div className="flex items-center gap-3">

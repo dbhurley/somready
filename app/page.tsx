@@ -139,8 +139,14 @@ export default function Home() {
             <SnippetGenerator />
           </div>
 
-          <p className="mt-6 text-sm text-text-faint">
+          <p className="mt-4 text-sm text-text-faint">
             Free forever for 100 requests/month. No credit card required.
+          </p>
+          <p className="mt-3 text-sm text-text-muted">
+            Already have a site?{' '}
+            <a href="/check" className="text-accent hover:underline font-medium">
+              Check if it&apos;s SOM-ready →
+            </a>
           </p>
         </div>
       </section>
