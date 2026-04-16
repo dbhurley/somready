@@ -36,7 +36,7 @@ export default function PricingCard({ name, price, subtitle, features, highlight
       <ul className="flex-1 space-y-3 mb-6">
         {features.map((f) => (
           <li key={f} className="flex items-start gap-2 text-sm text-text-primary">
-            <span className="text-green mt-0.5 flex-shrink-0">&check;</span>
+            <span className="text-green mt-0.5 flex-shrink-0">✓</span>
             {f}
           </li>
         ))}
