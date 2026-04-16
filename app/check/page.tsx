@@ -143,10 +143,25 @@ export default function CheckPage() {
     else                     { setCopiedBadge(true);  setTimeout(() => setCopiedBadge(false), 2000) }
   }
 
-  // Pre-fill domain from ?d= query param on mount
+  // Pre-fill and auto-check domain from ?d= query param on mount
   useEffect(() => {
     const q = new URLSearchParams(window.location.search).get('d')
-    if (q) setDomain(q)
+    if (q) {
+      const d = q.replace(/^https?:\/\//, '').replace(/\/.*$/, '').trim().toLowerCase()
+      setDomain(q)
+      if (d && /^[a-z0-9.-]+\.[a-z]{2,}$/.test(d)) {
+        setLoading(true)
+        fetch(`/api/check?domain=${encodeURIComponent(d)}`)
+          .then(res => res.json())
+          .then((data: CheckResult) => setResult(data))
+          .catch(() => setResult({
+            domain: d, level: 'error',
+            directives: { endpoint: null, format: null, scope: null, freshness: null, tokenBudget: null, rateLimit: null, attribution: null, raw: [] },
+            robotsUrl: '', error: 'Network error', checkedAt: new Date().toISOString(),
+          }))
+          .finally(() => setLoading(false))
+      }
+    }
   }, [])
 
   return (

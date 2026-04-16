@@ -52,10 +52,11 @@ function makeBadge(level: ReadinessLevel): string {
 
 export async function GET(
   _req: NextRequest,
-  { params }: { params: { domain: string } },
+  { params }: { params: Promise<{ domain: string }> },
 ) {
+  const { domain } = await params
   // Strip optional .svg extension
-  const rawDomain = decodeURIComponent(params.domain).replace(/\.svg$/i, '').trim()
+  const rawDomain = decodeURIComponent(domain || '').replace(/\.svg$/i, '').trim()
 
   let level: ReadinessLevel = 'none'
   if (rawDomain) {
