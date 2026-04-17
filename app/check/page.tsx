@@ -114,9 +114,11 @@ export default function CheckPage() {
 
   const cleanDomain = domain.replace(/^https?:\/\//, '').replace(/\/.*$/, '').trim().toLowerCase()
 
-  const badgeUrl    = `https://somready.com/badge/${cleanDomain}.svg`
-  const badgeEmbed  = `<a href="https://somready.com/check?d=${cleanDomain}"><img src="${badgeUrl}" alt="SOM Ready" /></a>`
-  const badgeMd     = `[![SOM Ready](${badgeUrl})](https://somready.com/check?d=${cleanDomain})`
+  // Use result.domain when available (the exact domain that was checked), otherwise fall back to cleanDomain
+  const badgeDomain = result?.domain || cleanDomain
+  const badgeUrl    = `https://somready.com/badge/${badgeDomain}.svg`
+  const badgeEmbed  = `<a href="https://somready.com/check?d=${badgeDomain}"><img src="${badgeUrl}" alt="SOM Ready" /></a>`
+  const badgeMd     = `[![SOM Ready](${badgeUrl})](https://somready.com/check?d=${badgeDomain})`
 
   const handleCheck = async () => {
     if (!cleanDomain) return
@@ -305,7 +307,7 @@ export default function CheckPage() {
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                   src={badgeUrl}
-                  alt={`somready badge for ${cleanDomain}`}
+                  alt={`somready badge for ${badgeDomain}`}
                   height={20}
                 />
                 <span className="text-xs text-faint">Live preview</span>
