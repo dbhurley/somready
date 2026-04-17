@@ -75,6 +75,7 @@ export async function checkDomain(rawDomain: string): Promise<CheckResult> {
     const res = await fetch(robotsUrl, {
       headers: { 'User-Agent': 'somready-checker/1.0 (+https://somready.com)' },
       signal: AbortSignal.timeout(8000),
+      cache: 'no-store',
     })
 
     if (!res.ok) {

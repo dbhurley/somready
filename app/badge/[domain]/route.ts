@@ -59,17 +59,9 @@ export async function GET(
   const rawDomain = decodeURIComponent(domain || '').replace(/\.svg$/i, '').trim()
 
   let level: ReadinessLevel = 'none'
-  let debug = ''
   if (rawDomain) {
-    try {
-      const result = await checkDomain(rawDomain)
-      level = result.level === 'error' ? 'none' : result.level
-      debug = `domain=${rawDomain} level=${result.level} error=${result.error ?? 'none'}`
-    } catch (e) {
-      debug = `domain=${rawDomain} catch=${e instanceof Error ? e.message : String(e)}`
-    }
-  } else {
-    debug = `empty-domain param=${domain}`
+    const result = await checkDomain(rawDomain)
+    level = result.level === 'error' ? 'none' : result.level
   }
 
   return new NextResponse(makeBadge(level), {
@@ -77,7 +69,6 @@ export async function GET(
       'Content-Type':    'image/svg+xml',
       'Cache-Control':   'public, s-maxage=3600, stale-while-revalidate=86400',
       'Access-Control-Allow-Origin': '*',
-      'X-Badge-Debug':   debug,
     },
   })
 }
