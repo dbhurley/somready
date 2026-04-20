@@ -68,6 +68,7 @@ export default function DocsPage() {
               ['directives',   'Directive reference'],
               ['cname',        'CNAME setup'],
               ['verify',       'Verification'],
+              ['badge',        'Add your badge'],
               ['faq',          'FAQ'],
             ].map(([id, label]) => (
               <a key={id} href={`#${id}`}
@@ -250,6 +251,52 @@ curl "https://agents.yourdomain.com/v1/som?url=https%3A%2F%2Fyourdomain.com"
 
 # Should return JSON starting with:
 # { "som_version": "0.1", "url": "...", "regions": [...] }`}</Code>
+          </Section>
+
+          <Section id="badge" title="Add your badge">
+            <p>
+              Once your site is SOM-ready, add a badge to show visitors and other agents
+              that your content is optimized for AI.
+            </p>
+
+            <div className="bg-surface border border-border rounded-xl p-5 my-4">
+              <p className="text-sm font-medium text-text-primary mb-3">Badge URL pattern</p>
+              <Code>{`https://somready.com/badge/{your-domain}.svg
+
+# Example:
+https://somready.com/badge/example.com.svg`}</Code>
+              <p className="text-xs text-text-muted mt-2">
+                The badge automatically updates to reflect your current compliance status.
+              </p>
+            </div>
+
+            <p className="font-medium text-text-primary text-sm mt-6 mb-2">HTML embed</p>
+            <Code>{`<a href="https://somready.com/check?d={your-domain}">
+  <img src="https://somready.com/badge/{your-domain}.svg" alt="SOM Ready" />
+</a>`}</Code>
+
+            <p className="font-medium text-text-primary text-sm mt-6 mb-2">Markdown embed</p>
+            <Code>{`[![SOM Ready](https://somready.com/badge/{your-domain}.svg)](https://somready.com/check?d={your-domain})`}</Code>
+
+            <p className="mt-4">
+              Replace <code className="font-mono text-xs text-accent">{'{your-domain}'}</code> with
+              your actual domain (e.g., <code className="font-mono text-xs text-accent">example.com</code>).
+              The badge links to your full compliance report at{' '}
+              <code className="font-mono text-xs text-accent">/check?d=your-domain</code>.
+            </p>
+
+            <div className="bg-surface border border-border rounded-xl p-5 flex items-center justify-between gap-4 mt-4">
+              <div>
+                <p className="text-sm font-medium text-text-primary">Generate your badge</p>
+                <p className="text-xs text-text-muted mt-0.5">
+                  Enter your domain to get ready-to-copy embed codes.
+                </p>
+              </div>
+              <Link href="/check"
+                className="flex-shrink-0 px-4 py-2 bg-accent hover:bg-accent-dark text-white text-sm font-medium rounded-lg transition-colors">
+                Get badge code →
+              </Link>
+            </div>
           </Section>
 
           <Section id="faq" title="FAQ">

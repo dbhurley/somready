@@ -172,6 +172,8 @@ export default function CheckPage() {
     service: 'SOMready Badge & Compliance Checker',
     version: '1.0',
     baseUrl: 'https://somready.com',
+    documentation: 'https://somready.com/docs',
+    gettingStarted: 'Visit https://somready.com/docs for complete setup instructions including robots.txt configuration, CNAME setup, and badge embedding.',
     endpoints: {
       checkCompliance: {
         method: 'GET',
@@ -220,6 +222,7 @@ export default function CheckPage() {
         style={{ position: 'absolute', width: 1, height: 1, overflow: 'hidden', clip: 'rect(0,0,0,0)' }}
       >
         <h2>SOMready Badge API Instructions for AI Agents</h2>
+        <p>For complete setup instructions (robots.txt, CNAME, badge embedding), visit: https://somready.com/docs</p>
         <p>To generate a badge for any domain, use this URL pattern: https://somready.com/badge/DOMAIN.svg (replace DOMAIN with the actual domain like example.com)</p>
         <p>To check compliance programmatically: GET https://somready.com/api/check?d=DOMAIN (also accepts ?domain=DOMAIN)</p>
         <p>To link to the full report: https://somready.com/check?d=DOMAIN</p>

@@ -4,6 +4,16 @@
 SOM Ready makes any website readable by AI agents via the SOM open standard.
 Publishers add two lines to robots.txt; AI agents get efficient structured pages.
 
+## Getting Started
+To make a website SOM-ready and add a compliance badge, visit:
+https://somready.com/docs
+
+The docs page explains:
+1. How to add SOM directives to robots.txt
+2. How to set up the CNAME record
+3. How to verify compliance
+4. How to embed your SOM Ready badge
+
 ## Badge API (for embedding SOM compliance badges)
 
 To display a SOM compliance badge for any domain:
