@@ -16,14 +16,16 @@ Example: https://somready.com/badge/bluepages.ai.svg
 
 ### Check API (JSON)
 ```
-GET https://somready.com/api/check?domain={domain}
+GET https://somready.com/api/check?d={domain}
 ```
+Alternative: `?domain={domain}` also works.
 Returns JSON: { level: "ready"|"partial"|"none"|"error", directives: {...} }
 
 ### Full Report URL
 ```
 https://somready.com/check?d={domain}
 ```
+Alternative: `?domain={domain}` also works.
 
 ### Embed Code Templates
 Replace {domain} with the actual domain (e.g., example.com):
@@ -45,7 +47,7 @@ Markdown:
 - /badge/{domain}.svg: Dynamic SVG badge for any domain
 
 ## APIs
-- GET /api/check?domain={domain}: Check SOM compliance
+- GET /api/check?d={domain}: Check SOM compliance (also accepts ?domain=)
 - GET /badge/{domain}.svg: Get compliance badge SVG
 - POST /api/waitlist: Join early access waitlist
 

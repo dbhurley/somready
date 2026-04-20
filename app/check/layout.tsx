@@ -37,9 +37,9 @@ const jsonLd = {
     priceCurrency: 'USD',
   },
   featureList: [
-    'Check any domain for SOM compliance via /api/check?domain={domain}',
+    'Check any domain for SOM compliance via /api/check?d={domain} (or ?domain={domain})',
     'Generate SVG badges via /badge/{domain}.svg',
-    'Link to full compliance report via /check?d={domain}',
+    'Link to full compliance report via /check?d={domain} (or ?domain={domain})',
   ],
 }
 

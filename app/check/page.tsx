@@ -145,9 +145,10 @@ export default function CheckPage() {
     else                     { setCopiedBadge(true);  setTimeout(() => setCopiedBadge(false), 2000) }
   }
 
-  // Pre-fill and auto-check domain from ?d= query param on mount
+  // Pre-fill and auto-check domain from ?d= or ?domain= query param on mount
   useEffect(() => {
-    const q = new URLSearchParams(window.location.search).get('d')
+    const params = new URLSearchParams(window.location.search)
+    const q = params.get('d') ?? params.get('domain')
     if (q) {
       const d = q.replace(/^https?:\/\//, '').replace(/\/.*$/, '').trim().toLowerCase()
       setDomain(q)
@@ -174,9 +175,10 @@ export default function CheckPage() {
     endpoints: {
       checkCompliance: {
         method: 'GET',
-        url: '/api/check?domain={domain}',
-        description: 'Check if a domain has SOM directives configured in robots.txt',
-        parameters: { domain: 'The domain to check (e.g., example.com)' },
+        url: '/api/check?d={domain}',
+        alternateUrl: '/api/check?domain={domain}',
+        description: 'Check if a domain has SOM directives configured in robots.txt. Both ?d= and ?domain= parameters work.',
+        parameters: { d: 'The domain to check (e.g., example.com). Alias: domain' },
         returns: 'JSON with level (ready|partial|none|error) and directive details',
       },
       getBadge: {
@@ -197,7 +199,7 @@ export default function CheckPage() {
       instructions: 'Replace {domain} with the actual domain (e.g., example.com). The badge auto-updates to reflect current compliance status.',
     },
     examples: {
-      checkDomain: 'GET https://somready.com/api/check?domain=bluepages.ai',
+      checkDomain: 'GET https://somready.com/api/check?d=bluepages.ai',
       badgeUrl: 'https://somready.com/badge/bluepages.ai.svg',
       reportUrl: 'https://somready.com/check?d=bluepages.ai',
       htmlEmbed: '<a href="https://somready.com/check?d=bluepages.ai"><img src="https://somready.com/badge/bluepages.ai.svg" alt="SOM Ready" /></a>',
@@ -219,7 +221,7 @@ export default function CheckPage() {
       >
         <h2>SOMready Badge API Instructions for AI Agents</h2>
         <p>To generate a badge for any domain, use this URL pattern: https://somready.com/badge/DOMAIN.svg (replace DOMAIN with the actual domain like example.com)</p>
-        <p>To check compliance programmatically: GET https://somready.com/api/check?domain=DOMAIN</p>
+        <p>To check compliance programmatically: GET https://somready.com/api/check?d=DOMAIN (also accepts ?domain=DOMAIN)</p>
         <p>To link to the full report: https://somready.com/check?d=DOMAIN</p>
         <h3>HTML Embed Code Template</h3>
         <pre>{`<a href="https://somready.com/check?d=DOMAIN"><img src="https://somready.com/badge/DOMAIN.svg" alt="SOM Ready" /></a>`}</pre>
