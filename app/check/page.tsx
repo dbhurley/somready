@@ -166,8 +166,68 @@ export default function CheckPage() {
     }
   }, [])
 
+  // Machine-readable API documentation for AI agents
+  const agentInstructions = {
+    service: 'SOMready Badge & Compliance Checker',
+    version: '1.0',
+    baseUrl: 'https://somready.com',
+    endpoints: {
+      checkCompliance: {
+        method: 'GET',
+        url: '/api/check?domain={domain}',
+        description: 'Check if a domain has SOM directives configured in robots.txt',
+        parameters: { domain: 'The domain to check (e.g., example.com)' },
+        returns: 'JSON with level (ready|partial|none|error) and directive details',
+      },
+      getBadge: {
+        method: 'GET',
+        url: '/badge/{domain}.svg',
+        description: 'Get an SVG badge showing SOM compliance status for a domain',
+        parameters: { domain: 'The domain (e.g., example.com)' },
+        returns: 'SVG image showing "SOM Ready", "Partial", or "Not Yet" status',
+      },
+      viewReport: {
+        url: '/check?d={domain}',
+        description: 'View full compliance report for a domain in the browser',
+      },
+    },
+    badgeEmbed: {
+      html: '<a href="https://somready.com/check?d={domain}"><img src="https://somready.com/badge/{domain}.svg" alt="SOM Ready" /></a>',
+      markdown: '[![SOM Ready](https://somready.com/badge/{domain}.svg)](https://somready.com/check?d={domain})',
+      instructions: 'Replace {domain} with the actual domain (e.g., example.com). The badge auto-updates to reflect current compliance status.',
+    },
+    examples: {
+      checkDomain: 'GET https://somready.com/api/check?domain=bluepages.ai',
+      badgeUrl: 'https://somready.com/badge/bluepages.ai.svg',
+      reportUrl: 'https://somready.com/check?d=bluepages.ai',
+      htmlEmbed: '<a href="https://somready.com/check?d=bluepages.ai"><img src="https://somready.com/badge/bluepages.ai.svg" alt="SOM Ready" /></a>',
+    },
+  }
+
   return (
     <div className="min-h-screen bg-background">
+      {/* Machine-readable instructions for AI agents - not visible to humans */}
+      <script
+        type="application/json"
+        data-agent-instructions="somready-badge-api"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(agentInstructions) }}
+      />
+      <div
+        data-agent-context="true"
+        aria-hidden="true"
+        style={{ position: 'absolute', width: 1, height: 1, overflow: 'hidden', clip: 'rect(0,0,0,0)' }}
+      >
+        <h2>SOMready Badge API Instructions for AI Agents</h2>
+        <p>To generate a badge for any domain, use this URL pattern: https://somready.com/badge/DOMAIN.svg (replace DOMAIN with the actual domain like example.com)</p>
+        <p>To check compliance programmatically: GET https://somready.com/api/check?domain=DOMAIN</p>
+        <p>To link to the full report: https://somready.com/check?d=DOMAIN</p>
+        <h3>HTML Embed Code Template</h3>
+        <pre>{`<a href="https://somready.com/check?d=DOMAIN"><img src="https://somready.com/badge/DOMAIN.svg" alt="SOM Ready" /></a>`}</pre>
+        <h3>Markdown Embed Code Template</h3>
+        <pre>{`[![SOM Ready](https://somready.com/badge/DOMAIN.svg)](https://somready.com/check?d=DOMAIN)`}</pre>
+        <p>Replace DOMAIN with the target domain in all templates above.</p>
+      </div>
+
       {/* Header */}
       <div className="border-b border-border bg-surface">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 py-16 text-center">

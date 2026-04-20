@@ -19,6 +19,38 @@ export const metadata: Metadata = {
   },
 }
 
+// JSON-LD structured data for AI agents to understand the badge API
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'WebApplication',
+  name: 'SOMready Badge Generator',
+  url: 'https://somready.com/check',
+  description: 'Check SOM compliance and generate embeddable badges for any domain',
+  provider: {
+    '@type': 'Organization',
+    name: 'SOMready',
+    url: 'https://somready.com',
+  },
+  offers: {
+    '@type': 'Offer',
+    price: '0',
+    priceCurrency: 'USD',
+  },
+  featureList: [
+    'Check any domain for SOM compliance via /api/check?domain={domain}',
+    'Generate SVG badges via /badge/{domain}.svg',
+    'Link to full compliance report via /check?d={domain}',
+  ],
+}
+
 export default function CheckLayout({ children }: { children: React.ReactNode }) {
-  return <>{children}</>
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      {children}
+    </>
+  )
 }

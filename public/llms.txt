@@ -4,9 +4,50 @@
 SOM Ready makes any website readable by AI agents via the SOM open standard.
 Publishers add two lines to robots.txt; AI agents get efficient structured pages.
 
+## Badge API (for embedding SOM compliance badges)
+
+To display a SOM compliance badge for any domain:
+
+### Badge URL Pattern
+```
+https://somready.com/badge/{domain}.svg
+```
+Example: https://somready.com/badge/bluepages.ai.svg
+
+### Check API (JSON)
+```
+GET https://somready.com/api/check?domain={domain}
+```
+Returns JSON: { level: "ready"|"partial"|"none"|"error", directives: {...} }
+
+### Full Report URL
+```
+https://somready.com/check?d={domain}
+```
+
+### Embed Code Templates
+Replace {domain} with the actual domain (e.g., example.com):
+
+HTML:
+```html
+<a href="https://somready.com/check?d={domain}"><img src="https://somready.com/badge/{domain}.svg" alt="SOM Ready" /></a>
+```
+
+Markdown:
+```markdown
+[![SOM Ready](https://somready.com/badge/{domain}.svg)](https://somready.com/check?d={domain})
+```
+
 ## Key pages
 - /: Landing page, snippet generator, pricing
-- API: POST /api/waitlist for early access
+- /check: Domain compliance checker and badge generator
+- /docs: Publisher implementation guide
+- /badge/{domain}.svg: Dynamic SVG badge for any domain
+
+## APIs
+- GET /api/check?domain={domain}: Check SOM compliance
+- GET /badge/{domain}.svg: Get compliance badge SVG
+- POST /api/waitlist: Join early access waitlist
 
 ## Built on
 - SOM v1.0 specification: https://somspec.org/spec
