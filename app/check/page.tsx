@@ -148,7 +148,7 @@ export default function CheckPage() {
   // Pre-fill and auto-check domain from ?d= or ?domain= query param on mount
   useEffect(() => {
     const params = new URLSearchParams(window.location.search)
-    const q = params.get('d') ?? params.get('domain')
+    const q = params.get('d') || params.get('domain')
     if (q) {
       const d = q.replace(/^https?:\/\//, '').replace(/\/.*$/, '').trim().toLowerCase()
       setDomain(q)

@@ -2,8 +2,8 @@ import { NextRequest, NextResponse } from 'next/server'
 import { checkDomain } from '@/lib/som-robots'
 
 export async function GET(req: NextRequest) {
-  // Accept both ?domain= and ?d= for compatibility
-  const domain = req.nextUrl.searchParams.get('domain') ?? req.nextUrl.searchParams.get('d') ?? ''
+  // Accept both ?d= and ?domain= for compatibility (prefer ?d= if both provided)
+  const domain = req.nextUrl.searchParams.get('d') || req.nextUrl.searchParams.get('domain') || ''
 
   const result = await checkDomain(domain)
 
